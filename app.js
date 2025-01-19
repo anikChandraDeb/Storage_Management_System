@@ -10,7 +10,7 @@ import * as path from "path";
 import router from "./routes/api.js";
 import authRoutes from "./routes/authRoute.js";
 import { MONGODB_CONNECTION,PORT,MAX_JSON_SIZE,URL_ENCODER,WEB_CACHE,REQUEST_LIMIT_NUMBER,REQUEST_LIMIT_TIME, JWT_SECRET} from "./app/config/config.js";
-import fileUpload from "express-fileupload";
+
 import { lutimes } from "fs";
 import passport from 'passport';
 import session from 'express-session';
@@ -28,7 +28,7 @@ app.use(express.urlencoded({extended: URL_ENCODER}));
 app.use(hpp());
 app.use(helmet());
 app.use(cookieParser());
-app.use(fileUpload());
+
 
 // Configure Passport.js
 configureGoogleStrategy(passport);

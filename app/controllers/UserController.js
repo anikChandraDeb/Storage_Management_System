@@ -4,7 +4,8 @@ import { EncodeToken,DecodeToken } from "../utility/tokenUtility.js";
 import { SignUpService,LoginService,
     VerificationCodeService,CodeVerifyService,
     ResetPasswordService, 
-    DeleteService,ChangePasswordService} from "../services/UserService.js";
+    DeleteService,ChangePasswordService,
+    ProfileService} from "../services/UserService.js";
 
 
 
@@ -19,16 +20,9 @@ export const Login = async(req,res)=>{
     
 }
 
-export const ProfileDetails = async(req,res)=>{
-    try{
-        let user_id=req.headers['user_id'];
-        console.log(user_id)
-        let data = await UsersModel.findOne({"_id":user_id});
-        return res.json({"Status":"Success","Message":"User profileDetails Successfully","data":data});
-
-    }catch(error){
-        return res.json({"Status":"fail","Message":error.toString()});
-    }
+export const Profile = async(req,res)=>{
+    let result=await ProfileService(req);
+    return res.status(200).json(result);
 }
 
 export const ProfileUpdate = async(req,res)=>{

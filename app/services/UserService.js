@@ -2,11 +2,18 @@ import UsersModel from "../models/UsersModel.js";
 import { EncodeToken,DecodeToken } from "../utility/tokenUtility.js";
 import EmailSend from "../utility/emailUtility.js";
 import mongoose from "mongoose";
+import bcrypt from 'bcrypt';
+
+
+
+
 
 
 export const SignUpService=async(req)=>{
     try{
         let reqBody=req.body;
+        const salt = await bcrypt.genSalt(10);
+        reqBody.password=await bcrypt.hash(reqBody.password,salt);
         let result=await UsersModel.create(reqBody);
         return {"Status":"Success","Message":"User registration Successfully"};
     }catch(error){
@@ -23,7 +30,8 @@ export const LoginService=async(req,res)=>{
             return {"Status":"fail","Message":"User not found"};
         }
         else{
-            if(data.password==reqbody.password){
+            let isMatch = await bcrypt.compare(reqody.password, data.password);
+            if(isMatch){
                 //Login Success Token Encode
                 console.log(data.email+ " "+ data._id);
                 let token=EncodeToken(data['email'],data['_id']);
@@ -31,7 +39,7 @@ export const LoginService=async(req,res)=>{
                 res.cookie('authToken', token, { 
                     expires: new Date(Date.now() + 360000), // Set the cookie to expire in 360000ms (6 minutes)
                     httpOnly: true, // Secure option (only accessible via HTTP)
-                });
+                });b
                 
                 
                 return {"Status":"Success","Token":token,"Message":"User login Successfully"};
@@ -148,6 +156,18 @@ export const ChangePasswordService=async(req)=>{
             if(result.modifiedCount) return {"Status":"Success","Message":"Password Updated"};
             else return  {"Status":"fail","Message":"Password not Updated"};
         }
+    }catch(error){
+        return {"Status":"fail","Message":error.toString()};
+    }
+}
+
+export const ProfileService=async(req)=>{
+    try{
+        let user_id=req.headers['user_id'];
+        console.log(user_id)
+        let data = await UsersModel.findOne({"_id":user_id});
+        return {"Status":"Success","Message":"User profile Info.","data":data};
+
     }catch(error){
         return {"Status":"fail","Message":error.toString()};
     }

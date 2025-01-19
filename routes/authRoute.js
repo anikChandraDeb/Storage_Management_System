@@ -38,6 +38,8 @@ router.post('/CodeVerify',UserController.CodeVerify);
 router.post('/ResetPassword',UserController.ResetPassword);
 router.get('/Delete',authMiddlewares,UserController.Delete);
 router.post('/ChangePassword',authMiddlewares,UserController.ChangePassword);
+router.get('/Logout',authMiddlewares,UserController.Logout);
+router.get('/Profile',authMiddlewares, UserController.Profile);
 
 
 export default router; //export this file

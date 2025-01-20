@@ -48,8 +48,8 @@ The Storage Management System is a Node.js-based backend application for managin
 4. **Set Up MongoDB**
 
    Ensure MongoDB is running on your local machine or connect to a cloud instance. Update the `MONGO_URI` in the `config.js` file if necessary.
-   
-   Create a new Database name `storage` and upload the dummy data located in the dummy_data directory
+
+   Create a new Database name `storage` and upload the dummy data located in the dummy_data directory(there are three tables `files`,`users`,`folders`)
 
 5. **Run the Application**
 

@@ -34,7 +34,7 @@ The Storage Management System is a Node.js-based backend application for managin
 
    MONGODB_CONNECTION="your mongodb connection"
    
-   #Set Email Server to work Reset Password Email Verification Perfectly
+   #Set Email Server Info to work Reset Password Email Verification Perfectly
 
    EMAIL_HOST="email server host"
    EMAIL_PORT="port"
@@ -88,9 +88,11 @@ storage-management-system/
 │   ├── config/
 │   │   ├── passport.js
 │   │   └── config.js
-│   └── utility/
-|   |
+│   ├── utility/
+│   ├── service/
+│   └── middlewares/
 ├── storage/ (Files stored here)
+├── routes/ (Routes in the root)
 ├── app.js
 ├── package.json
 └── README.md

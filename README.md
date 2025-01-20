@@ -8,8 +8,8 @@ The Storage Management System is a Node.js-based backend application for managin
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/storage-management-system.git
-   cd storage-management-system
+   git clone https://github.com/anikChandraDeb/Storage_Management_System
+   cd Storage_Management_System
    ```
 
 2. **Install Dependencies**
@@ -22,17 +22,20 @@ The Storage Management System is a Node.js-based backend application for managin
 
 3. **Configuration**
 
-   In  `config.js` file in the `app/config` directory set these variable :
+   In  `config.js` file located in the `app/config` directory set these variable :
 
    ```
-   #For Google authentication
+   #For Google authentication(SignUp with Google)
+
    GOOGLE_CLIENT_ID="your_google_client_id"
    GOOGLE_CLIENT_SECRET="your_google_client_secre"
    
    #MongoDB Connection
+
    MONGODB_CONNECTION="your mongodb connection"
    
    #Set Email Server to work Reset Password Email Verification Perfectly
+
    EMAIL_HOST="email server host"
    EMAIL_PORT="port"
    EMAIL_USER="email server account user"
@@ -45,6 +48,8 @@ The Storage Management System is a Node.js-based backend application for managin
 4. **Set Up MongoDB**
 
    Ensure MongoDB is running on your local machine or connect to a cloud instance. Update the `MONGO_URI` in the `config.js` file if necessary.
+   
+   Create a new Database name `storage` and upload the dummy data located in the dummy_data directory
 
 5. **Run the Application**
 

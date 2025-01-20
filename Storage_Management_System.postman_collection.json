@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\":\"anik\",\n    \"email\":\"anik.deb161@gmail.com\",\n    \"password\":\"anik1234\"\n}",
+							"raw": "{\n    \"username\":\"anik\",\n    \"email\":\"ripon@gmail.com\",\n    \"password\":\"anik1234\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,11 +24,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE}}/SignUp",
+							"raw": "{{BASE}}/auth/SignUp",
 							"host": [
 								"{{BASE}}"
 							],
 							"path": [
+								"auth",
 								"SignUp"
 							]
 						}
@@ -38,8 +39,27 @@
 				{
 					"name": "Login",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"ripon@gmail.com\",\n    \"password\":\"anik1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/auth/Login",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"auth",
+								"Login"
+							]
+						}
 					},
 					"response": []
 				},
@@ -57,7 +77,8 @@
 								"auth",
 								"google"
 							]
-						}
+						},
+						"description": "Go to browser"
 					},
 					"response": []
 				},
@@ -119,7 +140,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"anik.deb161@gmail.com\"\n}",
+							"raw": "{\n    \"email\":\"anik.deb161@gmail.com\",\n    \"code\":\"118517\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -127,13 +148,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE}}/auth/VerificationCode",
+							"raw": "{{BASE}}/auth/CodeVerify",
 							"host": [
 								"{{BASE}}"
 							],
 							"path": [
 								"auth",
-								"VerificationCode"
+								"CodeVerify"
 							]
 						}
 					},
@@ -146,7 +167,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"anik.deb161@gmail.com\"\n}",
+							"raw": "{\n    \"email\":\"anik.deb161@gmail.com\",\n    \"code\":\"118517\",\n    \"password\":\"anik@deb\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -170,10 +191,16 @@
 					"name": "ChangePassword",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"anik.deb161@gmail.com\"\n}",
+							"raw": "{\n    \"curPassword\":\"1234\",\n    \"newPassword\":\"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -181,13 +208,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE}}/auth/ResetPassword",
+							"raw": "{{BASE}}/auth/ChangePassword",
 							"host": [
 								"{{BASE}}"
 							],
 							"path": [
 								"auth",
-								"ResetPassword"
+								"ChangePassword"
 							]
 						}
 					},
@@ -215,14 +242,20 @@
 					"name": "Profile",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{BASE}}/auth/Profile",
+							"raw": "{{BASE}}/user/Profile",
 							"host": [
 								"{{BASE}}"
 							],
 							"path": [
-								"auth",
+								"user",
 								"Profile"
 							]
 						}
@@ -232,16 +265,37 @@
 				{
 					"name": "editProfile",
 					"request": {
-						"method": "GET",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/anik/Desktop/abc.jpg"
+								},
+								{
+									"key": "username",
+									"value": "anikdebprem",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "{{BASE}}/auth/Profile",
+							"raw": "{{BASE}}/user/editProfile",
 							"host": [
 								"{{BASE}}"
 							],
 							"path": [
-								"auth",
-								"Profile"
+								"user",
+								"editProfile"
 							]
 						}
 					},
@@ -256,15 +310,21 @@
 					"name": "getStorageStats",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{BASE}}/auth/Profile",
+							"raw": "{{BASE}}/user/getStorageStats",
 							"host": [
 								"{{BASE}}"
 							],
 							"path": [
-								"auth",
-								"Profile"
+								"user",
+								"getStorageStats"
 							]
 						}
 					},
@@ -307,7 +367,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"Folder1.1\",\n    \"userId\":\"678c4597ef3c3b8af7b8a458\"\n}",
+							"raw": "{\n    \"name\":\"Folder5\",\n    \"userId\":\"678e7274ae9817d1ea7b249f\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -371,13 +431,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{BASE}}/duplicate/678cf08b0cb880c512879d12/folder",
+							"raw": "{{BASE}}/duplicate/678e758d683b4f4c26e0627b/folder",
 							"host": [
 								"{{BASE}}"
 							],
 							"path": [
 								"duplicate",
-								"678cf08b0cb880c512879d12",
+								"678e758d683b4f4c26e0627b",
 								"folder"
 							]
 						}
@@ -386,9 +446,6 @@
 				},
 				{
 					"name": "delete",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -398,24 +455,15 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{BASE}}/delete/678d84e00b28640d649e3509/file",
+							"raw": "{{BASE}}/delete/678e758d683b4f4c26e0627b/folder",
 							"host": [
 								"{{BASE}}"
 							],
 							"path": [
 								"delete",
-								"678d84e00b28640d649e3509",
-								"file"
+								"678e758d683b4f4c26e0627b",
+								"folder"
 							]
 						}
 					},
@@ -433,22 +481,27 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"newName\":\"Picture\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/anik/Desktop/abc.jpg"
+								},
+								{
+									"key": "folderId",
+									"value": "678e756b683b4f4c26e06271",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "{{BASE}}/renameFolder/678cefa3cc75e42047b0cda3",
+							"raw": "{{BASE}}/addImage",
 							"host": [
 								"{{BASE}}"
 							],
 							"path": [
-								"renameFolder",
-								"678cefa3cc75e42047b0cda3"
+								"addImage"
 							]
 						}
 					},
@@ -466,13 +519,19 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"newName\":\"Picture\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "pdf",
+									"type": "file",
+									"src": "/home/anik/Documents/DUET CSE/CSE_3Year_1st Semester all resourse/Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf"
+								},
+								{
+									"key": "folderId",
+									"value": "678e757a683b4f4c26e06273",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{BASE}}/addPdf",
@@ -498,13 +557,19 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"newName\":\"Picture\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "text",
+									"type": "file",
+									"src": "/home/anik/Documents/Development/MERN STACK COURSE/Module-19/Practice/ShopEase_Backend/ToDo.text"
+								},
+								{
+									"key": "folderId",
+									"value": "678e7580683b4f4c26e06275",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{BASE}}/addNote",
@@ -622,8 +687,33 @@
 				{
 					"name": "listOfItemByDate",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"specificDate\":\"2025-01-20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/listOfItemByDate/",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"listOfItemByDate",
+								""
+							]
+						}
 					},
 					"response": []
 				}
@@ -636,7 +726,24 @@
 					"name": "addFavorite",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE}}/addFavorite/678e7585683b4f4c26e06277/folder",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"addFavorite",
+								"678e7585683b4f4c26e06277",
+								"folder"
+							]
+						}
 					},
 					"response": []
 				},
@@ -644,7 +751,24 @@
 					"name": "removeFavorite",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE}}/removeFavorite/678e7748683b4f4c26e06292/file",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"removeFavorite",
+								"678e7748683b4f4c26e06292",
+								"file"
+							]
+						}
 					},
 					"response": []
 				},
@@ -730,13 +854,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE}}/secret/setPin",
+							"raw": "{{BASE}}/secret/getInSecret",
 							"host": [
 								"{{BASE}}"
 							],
 							"path": [
 								"secret",
-								"setPin"
+								"getInSecret"
 							]
 						}
 					},
@@ -764,6 +888,11 @@
 								{
 									"key": "pin",
 									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "folderId",
+									"value": "678cefa3cc75e42047b0cda3",
 									"type": "text"
 								}
 							]
@@ -796,25 +925,30 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "text",
+									"key": "image",
 									"type": "file",
-									"src": "/home/anik/Documents/Development/MERN STACK COURSE/Module-19/Practice/ShopEase_Backend/ToDo.text"
+									"src": "/home/anik/Desktop/abc.jpg"
 								},
 								{
 									"key": "pin",
 									"value": "12345",
 									"type": "text"
+								},
+								{
+									"key": "folderId",
+									"value": "678cefa3cc75e42047b0cda3",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{BASE}}/secret/addSecretNote",
+							"raw": "{{BASE}}/secret/addSecretImage",
 							"host": [
 								"{{BASE}}"
 							],
 							"path": [
 								"secret",
-								"addSecretNote"
+								"addSecretImage"
 							]
 						}
 					},
@@ -835,9 +969,9 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "text",
+									"key": "pdf",
 									"type": "file",
-									"src": "/home/anik/Documents/Development/MERN STACK COURSE/Module-19/Practice/ShopEase_Backend/ToDo.text"
+									"src": "/home/anik/Documents/DUET CSE/CSE_3Year_1st Semester all resourse/Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf"
 								},
 								{
 									"key": "pin",
@@ -897,7 +1031,11 @@
 		},
 		{
 			"key": "TOKEN",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuaWsuZGViMTYxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiI2NzhlNzI3NGFlOTgxN2QxZWE3YjI0OWYiLCJpYXQiOjE3MzczODg2NjUsImV4cCI6MTczOTk4MDY2NX0.Qrcsz-Z-RWNaSnJSyJT4yxb_Jn4gdsOLyzdVTndS8us",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpcG9uQGdtYWlsLmNvbSIsInVzZXJfaWQiOiI2NzhlYjc2NDk1YTlmM2E0YTE3Yzg2MTIiLCJpYXQiOjE3Mzc0MDYzMTMsImV4cCI6MTczOTk5ODMxM30.kc8o_ZRy8Nqmf1cBfS4HCOMgHYoBHi2eVgkBMlJN5pU",
+			"type": "string"
+		},
+		{
+			"value": "",
 			"type": "string"
 		}
 	]

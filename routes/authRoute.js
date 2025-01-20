@@ -19,7 +19,7 @@ router.get("/google", passport.authenticate("google", { scope: ["profile", "emai
 // Callback after Google login
 router.get(
   "/google/callback",
-  passport.authenticate("google", { failureRedirect: "/api/auth/login" }),
+  passport.authenticate("google", { failureRedirect: "/api/auth/error" }),
   (req, res) => {
     // Generate JWT
     const token = EncodeToken(req.user.email,req.user._id);
@@ -31,7 +31,7 @@ router.get(
   }
 );
 // Define the login route
-router.get('/login', (req, res) => {
+router.get('/error', (req, res) => {
     res.send("Please log in with Google");
 });
 

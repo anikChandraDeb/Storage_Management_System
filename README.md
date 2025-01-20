@@ -2,21 +2,6 @@
 
 The Storage Management System is a Node.js-based backend application for managing files and folders, supporting features like user authentication, folder hierarchy, and file uploads. This system uses MongoDB as the database and integrates with Google OAuth for authentication.
 
-## Features
-
-- User Authentication (Email/Password and Google OAuth)
-- File Upload and Download
-- Folder Management (Nested Structure)
-- JWT-Based Authorization
-- Secure File Handling with Unique Identifiers
-
-## Prerequisites
-
-Before setting up the project, ensure you have the following installed:
-
-- [Node.js](https://nodejs.org/) (v14+ recommended)
-- [MongoDB](https://www.mongodb.com/try/download/community)
-- [Git](https://git-scm.com/)
 
 ## Installation Steps
 
@@ -35,24 +20,31 @@ Before setting up the project, ensure you have the following installed:
    npm install
    ```
 
-3. **Environment Configuration**
+3. **Configuration**
 
-   Create a `.env` file in the root directory and add the following configurations:
+   In  `config.js` file in the `app/config` directory set these variable :
 
-   ```env
-   PORT=5050
-   MONGO_URI=mongodb://localhost:27017/storage_management
-   JWT_SECRET=your_jwt_secret_key
-   GOOGLE_CLIENT_ID=your_google_client_id
-   GOOGLE_CLIENT_SECRET=your_google_client_secret
-   SESSION_SECRET=your_session_secret
+   ```
+   #For Google authentication
+   GOOGLE_CLIENT_ID="your_google_client_id"
+   GOOGLE_CLIENT_SECRET="your_google_client_secre"
+   
+   #MongoDB Connection
+   MONGODB_CONNECTION="your mongodb connection"
+   
+   #Set Email Server to work Reset Password Email Verification Perfectly
+   EMAIL_HOST="email server host"
+   EMAIL_PORT="port"
+   EMAIL_USER="email server account user"
+   EMAIL_PASSWORD="password"
+   MAIL_ENCRYPTION="encryption method"
    ```
 
    Replace `your_google_client_id`, `your_google_client_secret`, and other placeholders with your actual credentials.
 
 4. **Set Up MongoDB**
 
-   Ensure MongoDB is running on your local machine or connect to a cloud instance. Update the `MONGO_URI` in the `.env` file if necessary.
+   Ensure MongoDB is running on your local machine or connect to a cloud instance. Update the `MONGO_URI` in the `config.js` file if necessary.
 
 5. **Run the Application**
 
@@ -69,30 +61,12 @@ Before setting up the project, ensure you have the following installed:
    To run the app in development mode with live reload:
 
    ```bash
-   npm install -g nodemon
    nodemon app.js
    ```
 
 ## API Endpoints
-
-### Authentication
-
-- **POST** `/api/auth/register` - Register a new user.
-- **POST** `/api/auth/login` - Log in with email and password.
-- **GET** `/api/auth/google` - Log in with Google.
-- **GET** `/api/auth/logout` - Log out the user.
-
-### File Management
-
-- **POST** `/api/files/upload` - Upload a file.
-- **GET** `/api/files/:id` - Retrieve a file by ID.
-
-### Folder Management
-
-- **POST** `/api/folders` - Create a new folder.
-- **GET** `/api/folders/:id` - Get folder details by ID.
-- **PUT** `/api/folders/:id` - Update folder details.
-- **DELETE** `/api/folders/:id` - Delete a folder.
+Show in the postman collection and documentation(click below)
+https://documenter.getpostman.com/view/38239023/2sAYQcEqRm#dee8d1e5-4e53-4926-94ed-06968ef25202
 
 ## Folder and File Structure
 
@@ -107,10 +81,11 @@ storage-management-system/
 │   ├── models/
 │   ├── routes/
 │   ├── config/
-│   │   └── passport.js
+│   │   ├── passport.js
+│   │   └── config.js
 │   └── utility/
+|   |
 ├── storage/ (Files stored here)
-├── .env
 ├── app.js
 ├── package.json
 └── README.md
@@ -119,7 +94,7 @@ storage-management-system/
 ## Security Considerations
 
 - **JWT Tokens**: Tokens are used for authorization and should be stored securely (e.g., HTTP-only cookies).
-- **Environment Variables**: Do not hardcode sensitive credentials in the code.
+- **Environment Variables**: Do not hardcode sensitive credentials in the code; they are centralized in `config.js`.
 - **Unique File Names**: Uploaded files are stored with unique names to avoid conflicts.
 
 ## Future Improvements

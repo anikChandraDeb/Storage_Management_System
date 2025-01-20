@@ -142,8 +142,25 @@ export const DeleteService=async(req)=>{
         console.log(email);
         let result = await UsersModel.deleteOne({_id:user_id,email:email});
         
+
+
         if(result.deletedCount===0) return {"Status":"fail","Message":"User Delete Unsuccessful"};
         else{
+            await FileModel.deleteMany({userId:user_id});
+            await FolderModel.deleteMany({userId:user_id});
+
+            // Define the user's directory path
+            const userDirectory = path.join(__dirname, "../../storage", user_id.toString());
+
+            // Delete the user's directory
+            if (fs.existsSync(userDirectory)) {
+                fs.rmSync(userDirectory, { recursive: true, force: true });
+                console.log(`User directory deleted: ${userDirectory}`);
+            } else {
+                console.log(`User directory not found: ${userDirectory}`);
+            }
+
+
             return {"Status":"Success","Message":"User Delete Successfully"};
         }
     }catch(error){

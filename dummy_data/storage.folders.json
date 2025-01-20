@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "678e756b683b4f4c26e06271"
+  },
+  "name": "Images",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "favorite": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:10:19.279Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:10:19.279Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e757a683b4f4c26e06273"
+  },
+  "name": "Folder1",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "favorite": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:10:34.984Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:10:34.984Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7580683b4f4c26e06275"
+  },
+  "name": "Folder2",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "favorite": true,
+  "createdAt": {
+    "$date": "2025-01-20T16:10:40.235Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:26:25.745Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7585683b4f4c26e06277"
+  },
+  "name": "Folder3",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "favorite": true,
+  "createdAt": {
+    "$date": "2025-01-20T16:10:45.166Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:34:01.312Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7589683b4f4c26e06279"
+  },
+  "name": "Folder4",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "favorite": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:10:49.604Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:10:49.604Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7618683b4f4c26e06283"
+  },
+  "name": "Folder10_copy",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "favorite": true,
+  "createdAt": {
+    "$date": "2025-01-20T16:13:12.405Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:26:37.921Z"
+  }
+}]

@@ -1,0 +1,91 @@
+[{
+  "_id": {
+    "$oid": "678e67df3448ed781c54564c"
+  },
+  "username": "anik",
+  "email": "ripon@gmail.com",
+  "googleId": "1",
+  "password": "$2b$10$A2WLy2jU9ZCLN/yLLKsK0.qeXKSMRwpdK32fgT9mzqJneDlNxgwle",
+  "storageLimit": 16106127360,
+  "usedStorage": 0,
+  "otp": "0",
+  "createdAt": {
+    "$date": "2025-01-20T15:12:31.581Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T15:12:31.581Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e67f43448ed781c54564e"
+  },
+  "username": "anik",
+  "email": "ajgor@gmail.com",
+  "googleId": "1",
+  "password": "$2b$10$TnFw1ClfyFLS1yrT.Gt7uO6rvmx/cHZN6bZXMPnNU/hdmSpCGo1eK",
+  "storageLimit": 16106127360,
+  "usedStorage": 0,
+  "otp": "0",
+  "createdAt": {
+    "$date": "2025-01-20T15:12:52.037Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T15:12:52.037Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e68003448ed781c545650"
+  },
+  "username": "anik",
+  "email": "rakib@gmail.com",
+  "googleId": "1",
+  "password": "$2b$10$2jTEJf9ADCELB3wLLFriS./vcvanOxgrwJRC.A6LsAqgdYuSC.7Z2",
+  "storageLimit": 16106127360,
+  "usedStorage": 0,
+  "otp": "0",
+  "createdAt": {
+    "$date": "2025-01-20T15:13:04.380Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T15:13:04.380Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e70a7b4267608c6263132"
+  },
+  "username": "JOWEL MIAH",
+  "email": "jowelmiah2k22@gmail.com",
+  "googleId": "105042671494651289142",
+  "storageLimit": 16106127360,
+  "usedStorage": 0,
+  "otp": "0",
+  "createdAt": {
+    "$date": "2025-01-20T15:49:59.014Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T15:49:59.014Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "username": "anikdebprem",
+  "email": "anik.deb161@gmail.com",
+  "googleId": "1",
+  "password": "anik@deb",
+  "storageLimit": 16106127360,
+  "usedStorage": 8526868,
+  "otp": "0",
+  "createdAt": {
+    "$date": "2025-01-20T15:57:40.450Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:34:43.577Z"
+  },
+  "profilePicturePath": "storage/678e7274ae9817d1ea7b249f/1737389055627_abc.jpg",
+  "pinHash": "$2b$10$dbA05VGe0njlJEPLf1mjxuAeUMMTU/EiJD3iaztpk60Q/wHtsLyXW"
+}]

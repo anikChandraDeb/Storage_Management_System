@@ -14,48 +14,6 @@ export const createFolder = async (req, res) => {
 };
 
 
-// Rename a folder
-export const renameFolder= async (req, res) => {
-    const { folderId } = req.params;
-    const { newName } = req.body;
-
-    try {
-      const folder = await FolderModel.findById(folderId);
-      if (!folder) {
-        return res.status(404).json({"Status":"fail", error: "Folder not found" });
-      }
-
-      let result=await FolderModel.updateOne({_id:folderId},{name:newName});
-
-      res.status(200).json({"status":"Success", message: "Folder renamed successfully", folder });
-    } catch (error) {
-      res.status(500).json({"Status":"fail", error: "Failed to rename folder", details: error.message });
-    }
-}
-
-// Duplicate a folder
-export const duplicateFolder= async (req, res) => {
-    const { folderId } = req.params;
-    const { userId } = req.body; // Assuming the userId is passed in the request body
-
-    try {
-        const folder = await FolderModel.findById(folderId);
-        if (!folder) {
-            return res.status(404).json({"Status":"fail", error: "Folder not found" });
-        }
-
-        // Create a new folder with the same structure but associate it with the userId
-        let result= await FolderModel.create({
-            name: `${folder.name}_copy`,
-            userId: userId // Associate with the provided userId
-        });
-
-        res.status(201).json({ "status":"Success",message: "Folder duplicated successfully", folder: result });
-    } catch (error) {
-    res.status(500).json({"Status":"fail", error: "Failed to duplicate folder", details: error.message });
-    }
-}
-
   // Delete a folder
 export const deleteFolder= async (req, res) => {
     const { folderId } = req.params;
@@ -74,3 +32,27 @@ export const deleteFolder= async (req, res) => {
       res.status(500).json({"Status":"fail", error: "Failed to delete folder", details: error.message });
     }
 }
+
+// List all folders for a user
+export const listOfFolders = async (req, res) => {
+    const  userId  = req.headers.user_id; 
+  
+    try {
+      const folders = await FolderModel.find({ userId: userId });
+  
+      if (folders.length === 0) {
+        return res.status(404).json({ Status: "fail", message: "No folders found" });
+      }
+  
+      res.status(200).json({
+        Status: "success",
+        folders: folders
+      });
+    } catch (error) {
+      res.status(500).json({
+        Status: "fail",
+        error: "Failed to retrieve folders",
+        details: error.message
+      });
+    }
+  };

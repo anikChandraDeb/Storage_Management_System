@@ -3,23 +3,40 @@ import { EncodeToken,DecodeToken } from "../utility/tokenUtility.js";
 import EmailSend from "../utility/emailUtility.js";
 import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
+import path from 'node:path';
+import fs from 'fs';
+import FileModel from "../models/FileModel.js";
+import FolderModel from "../models/FolderModel.js";
+import { upload } from "../config/multerConfig.js";
 
 
+const __dirname = new URL('.', import.meta.url).pathname;
 
-
-
-
-export const SignUpService=async(req)=>{
-    try{
-        let reqBody=req.body;
+export const SignUpService = async (req) => {
+    try {
+        let reqBody = req.body;
+        
+        
         const salt = await bcrypt.genSalt(10);
-        reqBody.password=await bcrypt.hash(reqBody.password,salt);
-        let result=await UsersModel.create(reqBody);
-        return {"Status":"Success","Message":"User registration Successfully"};
-    }catch(error){
-        return {"Status":"fail","Message":error.toString()};
+        reqBody.password = await bcrypt.hash(reqBody.password, salt);
+        
+        // Create the user in the database
+        let result = await UsersModel.create(reqBody);
+        
+        // Get userId (assuming it is in the result object)
+        const userId = result._id; // Adjust according to your schema
+
+        // Define the storage folder path (two levels above)
+        const storagePath = path.join(__dirname, "../../storage", userId.toString());
+
+        // Create the folder for the user
+        fs.mkdirSync(storagePath, { recursive: true });
+
+        return { "Status": "Success", "Message": "User registration Successfully" };
+    } catch (error) {
+        return { "Status": "fail", "Message": error.toString() };
     }
-}
+};
 
 
 export const LoginService=async(req,res)=>{
@@ -30,7 +47,7 @@ export const LoginService=async(req,res)=>{
             return {"Status":"fail","Message":"User not found"};
         }
         else{
-            let isMatch = await bcrypt.compare(reqody.password, data.password);
+            let isMatch = await bcrypt.compare(reqbody.password, data.password);
             if(isMatch){
                 //Login Success Token Encode
                 console.log(data.email+ " "+ data._id);
@@ -38,8 +55,8 @@ export const LoginService=async(req,res)=>{
 
                 res.cookie('authToken', token, { 
                     expires: new Date(Date.now() + 360000), // Set the cookie to expire in 360000ms (6 minutes)
-                    httpOnly: true, // Secure option (only accessible via HTTP)
-                });b
+                    httpOnly: true, 
+                });
                 
                 
                 return {"Status":"Success","Token":token,"Message":"User login Successfully"};
@@ -165,10 +182,142 @@ export const ProfileService=async(req)=>{
     try{
         let user_id=req.headers['user_id'];
         console.log(user_id)
-        let data = await UsersModel.findOne({"_id":user_id});
-        return {"Status":"Success","Message":"User profile Info.","data":data};
+        let datas = await UsersModel.find({_id:user_id},{password:0,otp:0,createdAt:0,updatedAt:0});
+        // Add URLs to each file
+        const datawithurls = datas.map(data => {
+            const fileUrl = `${req.protocol}://${req.get('host')}/${data.profilePicturePath}`;
+            return {
+            ...data._doc,
+            fileUrl, // Add the fileUrl to each file object
+            };
+        });
+      
+      return { "Status": "Success", "Message": "User profile Info.", "data": datawithurls };
+      
 
     }catch(error){
         return {"Status":"fail","Message":error.toString()};
     }
 }
+
+export const getStorageStatsService = async (req, res) => {
+    const userId = req.headers.user_id;
+  
+    try {
+      if (!userId) {
+        return res.status(400).json({ error: 'User ID is required' });
+      }
+  
+
+      const totalFolders = await FolderModel.countDocuments({ userId });
+      
+      let ObjectID=mongoose.Types.ObjectId;
+      let userId_obj=new ObjectID(userId);
+
+
+      const fileStats = await FileModel.aggregate([
+        { $match: { userId: userId_obj ,isSecret:false} }, // Filter files for the user
+        {
+          $group: {
+            _id: '$fileType',
+            totalFiles: { $sum: 1 }, 
+            totalSize: { $sum: '$fileSize' }, 
+          },
+        },
+      ]);
+  
+
+      const totalSpace = fileStats.reduce((acc, file) => acc + file.totalSize, 0);
+
+      let user = await UsersModel.findById(userId);
+
+      if (!user) {
+         return res.status(404).json({ error: 'User not found' });
+    }
+      user.usedStorage=totalSpace;
+      let storageLimit=user.storageLimit;
+      let usedStorage=user.usedStorage;
+      let availableStorage=storageLimit-usedStorage;
+      await user.save();
+
+      // Organizing statistics
+      const stats = {
+        storageLimit,
+        usedStorage,
+        availableStorage,
+        totalFolders,
+        totalSpace,
+        fileDetails: {
+          notes: { count: 0, size: 0 },
+          pdfs: { count: 0, size: 0 },
+          images: { count: 0, size: 0 },
+        },
+      };
+  
+      // Map aggregated results to file types
+      fileStats.forEach((file) => {
+        const { _id: fileType, totalFiles, totalSize } = file;
+        if (fileType === 'text/plain') {
+          stats.fileDetails.notes.count = totalFiles;
+          stats.fileDetails.notes.size = totalSize;
+        } else if (fileType === 'application/pdf') {
+          stats.fileDetails.pdfs.count = totalFiles;
+          stats.fileDetails.pdfs.size = totalSize;
+        } else if (fileType.startsWith('image/')) {
+          stats.fileDetails.images.count += totalFiles;
+          stats.fileDetails.images.size += totalSize;
+        }
+      });
+  
+      res.status(200).json({ message: 'Storage statistics fetched successfully', stats });
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch storage statistics', details: error.message });
+    }
+};
+
+// Get recent files or folders for a user
+export const recentItemService = async (req, res) => {
+    const userId = req.headers.user_id;
+  
+    try {
+      // Fetch recent files
+      const recentFiles = await FileModel.find({ userId: userId }).sort({ createdAt: -1 }).limit(5);
+      
+
+      const recentFilesWithUrls = recentFiles.map(file => {
+        const fileUrl = `${req.protocol}://${req.get('host')}/storage/${userId.toString()}/${file.modifiedFileName}`;
+        return {
+          ...file._doc,
+          fileUrl, // Add the fileUrl to each file object
+        };
+      });
+  
+      // Fetch recent folders
+      const recentFolders = await FolderModel.find({ userId: userId }).sort({ createdAt: -1 }).limit(5);
+  
+      // Combine files and folders into one array
+      const recentItems = [
+        ...recentFilesWithUrls, 
+        ...recentFolders.map(folder => ({
+          ...folder._doc, 
+          fileUrl: `${req.protocol}://${req.get('host')}/storage/${userId.toString()}/${folder.name}` // You can adjust how the folder URL is generated
+        }))
+      ].sort((a, b) => b.createdAt - a.createdAt);
+  
+      if (recentItems.length === 0) {
+        return res.status(404).json({ Status: "fail", message: "No recent files or folders found" });
+      }
+  
+      res.status(200).json({
+        Status: "success",
+        recentItems: recentItems
+      });
+    } catch (error) {
+      res.status(500).json({
+        Status: "fail",
+        error: "Failed to retrieve recent files or folders",
+        details: error.message
+      });
+    }
+};
+  

@@ -1,0 +1,336 @@
+[{
+  "_id": {
+    "$oid": "678e7a26e09c9096a75f328a"
+  },
+  "name": "abc.jpg",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678e756b683b4f4c26e06271"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390630979_abc.jpg",
+  "fileType": "image/jpeg",
+  "modifiedFileName": "1737390630979_abc.jpg",
+  "fileSize": 58542,
+  "favorite": true,
+  "isSecret": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:30:30.982Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:33:20.682Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7a28e09c9096a75f328c"
+  },
+  "name": "abc.jpg",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678e756b683b4f4c26e06271"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390632709_abc.jpg",
+  "fileType": "image/jpeg",
+  "modifiedFileName": "1737390632709_abc.jpg",
+  "fileSize": 58542,
+  "favorite": false,
+  "isSecret": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:30:32.711Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:30:32.711Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7a2ae09c9096a75f328e"
+  },
+  "name": "abc.jpg",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678e756b683b4f4c26e06271"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390634255_abc.jpg",
+  "fileType": "image/jpeg",
+  "modifiedFileName": "1737390634255_abc.jpg",
+  "fileSize": 58542,
+  "favorite": true,
+  "isSecret": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:30:34.257Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:33:29.620Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7a2be09c9096a75f3290"
+  },
+  "name": "abc.jpg",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678e756b683b4f4c26e06271"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390635690_abc.jpg",
+  "fileType": "image/jpeg",
+  "modifiedFileName": "1737390635690_abc.jpg",
+  "fileSize": 58542,
+  "favorite": false,
+  "isSecret": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:30:35.692Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:30:35.692Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7a5ae09c9096a75f3292"
+  },
+  "name": "Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678e757a683b4f4c26e06273"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390682844_Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf",
+  "fileType": "application/pdf",
+  "modifiedFileName": "1737390682844_Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf",
+  "fileSize": 2764218,
+  "favorite": false,
+  "isSecret": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:31:22.877Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:31:22.877Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7a5ce09c9096a75f3294"
+  },
+  "name": "Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678e757a683b4f4c26e06273"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390684015_Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf",
+  "fileType": "application/pdf",
+  "modifiedFileName": "1737390684015_Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf",
+  "fileSize": 2764218,
+  "favorite": false,
+  "isSecret": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:31:24.037Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:31:24.037Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7a6ce09c9096a75f3296"
+  },
+  "name": "Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678e757a683b4f4c26e06273"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390700716_Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf",
+  "fileType": "application/pdf",
+  "modifiedFileName": "1737390700716_Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf",
+  "fileSize": 2764218,
+  "favorite": false,
+  "isSecret": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:31:40.734Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:31:40.734Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7a76e09c9096a75f3298"
+  },
+  "name": "try.text",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678e7580683b4f4c26e06275"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390710869_try.text",
+  "fileType": "text/plain",
+  "modifiedFileName": "1737390710869_try.text",
+  "fileSize": 23,
+  "favorite": false,
+  "isSecret": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:31:50.870Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:31:50.870Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7a78e09c9096a75f329a"
+  },
+  "name": "try.text",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678e7580683b4f4c26e06275"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390712375_try.text",
+  "fileType": "text/plain",
+  "modifiedFileName": "1737390712375_try.text",
+  "fileSize": 23,
+  "favorite": false,
+  "isSecret": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:31:52.377Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:31:52.377Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7a7fe09c9096a75f329c"
+  },
+  "name": "ToDo.text",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678e7580683b4f4c26e06275"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390719299_ToDo.text",
+  "fileType": "text/plain",
+  "modifiedFileName": "1737390719299_ToDo.text",
+  "fileSize": 0,
+  "favorite": false,
+  "isSecret": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:31:59.300Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:31:59.300Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7a80e09c9096a75f329e"
+  },
+  "name": "ToDo.text",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678e7580683b4f4c26e06275"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390720765_ToDo.text",
+  "fileType": "text/plain",
+  "modifiedFileName": "1737390720765_ToDo.text",
+  "fileSize": 0,
+  "favorite": false,
+  "isSecret": false,
+  "createdAt": {
+    "$date": "2025-01-20T16:32:00.767Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:32:00.767Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7b2be09c9096a75f32b7"
+  },
+  "name": "ToDo.text",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678cefa3cc75e42047b0cda3"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390891674_ToDo.text",
+  "fileType": "text/plain",
+  "modifiedFileName": "1737390891674_ToDo.text",
+  "fileSize": 0,
+  "favorite": false,
+  "isSecret": true,
+  "createdAt": {
+    "$date": "2025-01-20T16:34:51.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:34:51.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7b3ce09c9096a75f32ba"
+  },
+  "name": "abc.jpg",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678cefa3cc75e42047b0cda3"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390908559_abc.jpg",
+  "fileType": "image/jpeg",
+  "modifiedFileName": "1737390908559_abc.jpg",
+  "fileSize": 58542,
+  "favorite": false,
+  "isSecret": true,
+  "createdAt": {
+    "$date": "2025-01-20T16:35:08.710Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:35:08.710Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "678e7b47e09c9096a75f32bd"
+  },
+  "name": "Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf",
+  "userId": {
+    "$oid": "678e7274ae9817d1ea7b249f"
+  },
+  "folder": {
+    "$oid": "678cefa3cc75e42047b0cda3"
+  },
+  "filePath": "storage/678e7274ae9817d1ea7b249f/1737390919691_Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf",
+  "fileType": "application/pdf",
+  "modifiedFileName": "1737390919691_Section 4.4_ Big Data in Healthcare Management (Lecture 2).pdf",
+  "fileSize": 2764218,
+  "favorite": false,
+  "isSecret": true,
+  "createdAt": {
+    "$date": "2025-01-20T16:35:19.862Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-20T16:35:19.862Z"
+  }
+}]

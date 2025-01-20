@@ -1,7 +1,11 @@
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import { GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET,JWT_SECRET } from './config.js';
+import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, JWT_SECRET } from './config.js';
 import UsersModel from '../models/UsersModel.js';
+import path from 'node:path';
+import fs from 'fs';
+
+const __dirname = new URL('.', import.meta.url).pathname;
 
 export const configureGoogleStrategy = (passport) => {
   passport.use(
@@ -11,26 +15,39 @@ export const configureGoogleStrategy = (passport) => {
         clientSecret: GOOGLE_CLIENT_SECRET,
         callbackURL: "http://localhost:5050/api/auth/google/callback",
       },
-      async(accessToken, refreshToken, profile, done) => {
-        // Logic to find or create a user in the database
+      async (accessToken, refreshToken, profile, done) => {
         try {
-            // Check if the user already exists in the database
-            let user = await UsersModel.findOne({ email:profile.emails[0].value,googleId: profile.id });
-    
+          // Ensure the user is logged in via Google by checking if profile exists
+          if (profile) {
+            // Check if the user already exists in the database based on email
+            let user = await UsersModel.findOne({ email: profile.emails[0].value });
+
+            // If the user does not exist, create a new user
             if (!user) {
-              // If not, create a new user
-              let user =await UsersModel.create({
+              user = await UsersModel.create({
                 googleId: profile.id,
                 username: profile.displayName,
                 email: profile.emails[0].value,
                 profilePicture: profile.photos[0].value,
               });
+
+              // Get userId (assuming it is in the result object)
+              const userId = user._id;
+
+              // Define the storage folder path (two levels above)
+              const storagePath = path.join(__dirname, "../../storage", userId.toString());
+
+              // Create the folder for the user if it doesn't exist
+              fs.mkdirSync(storagePath, { recursive: true });
             }
-    
+            
             done(null, user);
-          } catch (error) {
-            done(error, null);
+          } else {
+            done(new Error("Google login failed"), null);
           }
+        } catch (error) {
+          done(error, null);
+        }
       }
     )
   );
@@ -39,13 +56,13 @@ export const configureGoogleStrategy = (passport) => {
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
-  
+
   passport.deserializeUser(async (id, done) => {
     try {
-      const user = await User.findById(id);
+      const user = await UsersModel.findById(id);
       done(null, user);
     } catch (error) {
       done(error, null);
     }
-  });  
+  });
 };

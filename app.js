@@ -9,6 +9,8 @@ import hpp from "hpp";
 import * as path from "path";
 import router from "./routes/api.js";
 import authRoutes from "./routes/authRoute.js";
+import secretRoute from "./routes/secretRoute.js";
+import userRoute from "./routes/userRoute.js";
 import { MONGODB_CONNECTION,PORT,MAX_JSON_SIZE,URL_ENCODER,WEB_CACHE,REQUEST_LIMIT_NUMBER,REQUEST_LIMIT_TIME, JWT_SECRET} from "./app/config/config.js";
 
 import { lutimes } from "fs";
@@ -47,19 +49,26 @@ app.use(limiter);
 //Web Caching Mechanism
 app.set('etag',false);
 
-//MongoDB Connection
-mongoose.connect(MONGODB_CONNECTION)
-.then(()=>{
+
+
+// MongoDB Connection
+mongoose.connect(MONGODB_CONNECTION, {
+    serverSelectionTimeoutMS: 30000, // Set timeout to 30 seconds
+    bufferCommands: false //disable buffer
+})
+.then(() => {
     console.log("MongoDB Connected");
 })
-.catch((error)=>{
-    console.log(error);
+.catch((error) => {
+    console.error("MongoDB Connection Error:", error);
 });
 
-//Set API Route
-app.use('/api',router);
-app.use("/api/auth", authRoutes);
 
+//Set API Route
+app.use("/api/auth", authRoutes);
+app.use('/api',router);
+app.use("/api/user", userRoute);
+app.use("/api/secret", secretRoute);
 //Set Application Storage
 app.use(express.static('storage'));
 

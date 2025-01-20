@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   googleId: { type: String,default:1 }, // Present only for Google accounts
-  profilePicture: { type: String },
+  profilePicturePath: { type: String },
   password: {
     type: String,
     validate: {
@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
       message: "Password is required for non-Google accounts.",
     },
   },
+  pinHash:{type:String,},
   storageLimit: { type: Number, default: 15 * 1024 * 1024 * 1024 }, // 15 GB
   usedStorage: { type: Number, default: 0 },
   otp:{type:String,default: 0}

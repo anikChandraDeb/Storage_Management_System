@@ -1,0 +1,904 @@
+{
+	"info": {
+		"_postman_id": "dbd50075-7ffb-46f0-9c4e-eee1112caf37",
+		"name": "Storage_Management_System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38239023"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"anik\",\n    \"email\":\"anik.deb161@gmail.com\",\n    \"password\":\"anik1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/SignUp",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"SignUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "googleSignUp",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE}}/auth/google",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"auth",
+								"google"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authToken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE}}/auth/Delete",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"auth",
+								"Delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerificationCode",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"anik.deb161@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/auth/VerificationCode",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"auth",
+								"VerificationCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CodeVerify",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"anik.deb161@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/auth/VerificationCode",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"auth",
+								"VerificationCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ResetPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"anik.deb161@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/auth/ResetPassword",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"auth",
+								"ResetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChangePassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"anik.deb161@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/auth/ResetPassword",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"auth",
+								"ResetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE}}/auth/Logout",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"auth",
+								"Logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE}}/auth/Profile",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"auth",
+								"Profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editProfile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE}}/auth/Profile",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"auth",
+								"Profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Home",
+			"item": [
+				{
+					"name": "getStorageStats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE}}/auth/Profile",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"auth",
+								"Profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recentItems",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE}}/user/recentItems",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"user",
+								"recentItems"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createFolder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Folder1.1\",\n    \"userId\":\"678c4597ef3c3b8af7b8a458\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/createFolder",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"createFolder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rename",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newName\":\"Picture\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/renameFolder/678cefa3cc75e42047b0cda3",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"renameFolder",
+								"678cefa3cc75e42047b0cda3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "duplicate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE}}/duplicate/678cf08b0cb880c512879d12/folder",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"duplicate",
+								"678cf08b0cb880c512879d12",
+								"folder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/delete/678d84e00b28640d649e3509/file",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"delete",
+								"678d84e00b28640d649e3509",
+								"file"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addImage",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newName\":\"Picture\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/renameFolder/678cefa3cc75e42047b0cda3",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"renameFolder",
+								"678cefa3cc75e42047b0cda3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addPdf",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newName\":\"Picture\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/addPdf",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"addPdf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addNote",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newName\":\"Picture\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/addNote",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"addNote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listOfFolders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE}}/listOfFolders/",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"listOfFolders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listOfNotes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE}}/listOfNotes/",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"listOfNotes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listOfImages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE}}/listOfImages/",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"listOfImages",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listOfPDFs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE}}/listOfPDFs/",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"listOfPDFs",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Calendar",
+			"item": [
+				{
+					"name": "listOfItemByDate",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favorite",
+			"item": [
+				{
+					"name": "addFavorite",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "removeFavorite",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "listFavoriteItem",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE}}/listFavoriteItem",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"listFavoriteItem"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Secret",
+			"item": [
+				{
+					"name": "setPin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pin\":\"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/secret/setPin",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"secret",
+								"setPin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getInSecret",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pin\":\"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/secret/setPin",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"secret",
+								"setPin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addSecretNote",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "text",
+									"type": "file",
+									"src": "/home/anik/Documents/Development/MERN STACK COURSE/Module-19/Practice/ShopEase_Backend/ToDo.text"
+								},
+								{
+									"key": "pin",
+									"value": "12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE}}/secret/addSecretNote",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"secret",
+								"addSecretNote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addSecretImage",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "text",
+									"type": "file",
+									"src": "/home/anik/Documents/Development/MERN STACK COURSE/Module-19/Practice/ShopEase_Backend/ToDo.text"
+								},
+								{
+									"key": "pin",
+									"value": "12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE}}/secret/addSecretNote",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"secret",
+								"addSecretNote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addSecretPdf",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authtoken",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "text",
+									"type": "file",
+									"src": "/home/anik/Documents/Development/MERN STACK COURSE/Module-19/Practice/ShopEase_Backend/ToDo.text"
+								},
+								{
+									"key": "pin",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "folderId",
+									"value": "678cefa3cc75e42047b0cda3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE}}/secret/addSecretPdf",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"secret",
+								"addSecretPdf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE",
+			"value": "http://localhost:5050/api",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuaWsuZGViMTYxQGdtYWlsLmNvbSIsInVzZXJfaWQiOiI2NzhlNzI3NGFlOTgxN2QxZWE3YjI0OWYiLCJpYXQiOjE3MzczODg2NjUsImV4cCI6MTczOTk4MDY2NX0.Qrcsz-Z-RWNaSnJSyJT4yxb_Jn4gdsOLyzdVTndS8us",
+			"type": "string"
+		}
+	]
+}

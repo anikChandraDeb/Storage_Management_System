@@ -1,7 +1,5 @@
 import express from "express";
 const router = express.Router();
-import * as taskController from "../app/controllers/taskController.js";
-import * as featureController from "../app/controllers/featureController.js";
 import authMiddlewares from "../app/middlewares/authMiddlewares.js";
 import * as UserController from "../app/controllers/UserController.js";
 import passport from "passport";
@@ -21,7 +19,7 @@ router.get("/google", passport.authenticate("google", { scope: ["profile", "emai
 // Callback after Google login
 router.get(
   "/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
+  passport.authenticate("google", { failureRedirect: "/api/auth/login" }),
   (req, res) => {
     // Generate JWT
     const token = EncodeToken(req.user.email,req.user._id);
@@ -32,6 +30,10 @@ router.get(
     res.json({ token });
   }
 );
+// Define the login route
+router.get('/login', (req, res) => {
+    res.send("Please log in with Google");
+});
 
 router.post('/VerificationCode',UserController.EmailVerify);
 router.post('/CodeVerify',UserController.CodeVerify);
@@ -39,7 +41,7 @@ router.post('/ResetPassword',UserController.ResetPassword);
 router.get('/Delete',authMiddlewares,UserController.Delete);
 router.post('/ChangePassword',authMiddlewares,UserController.ChangePassword);
 router.get('/Logout',authMiddlewares,UserController.Logout);
-router.get('/Profile',authMiddlewares, UserController.Profile);
+
 
 
 export default router; //export this file

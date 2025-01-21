@@ -49,9 +49,9 @@ const checkFileType = (file) => {
 
 // Add Image File
 export const addImage = [
-  upload.single('image'), // Middleware to handle file upload
+  upload.single('image'), 
   async (req, res) => {
-    const { folderId } = req.body;
+    let { folderId } = req.body;
     const userId = req.headers.user_id;
 
     try {
@@ -67,11 +67,7 @@ export const addImage = [
         return res.status(400).json({ error: 'Selected File not an image' });
       }
 
-      if (!folderId) {
-        fs.unlinkSync(req.file.path);
-        return res.status(400).json({ error: 'Folder ID is required' });
-      }
-
+      if(!folderId) folderId=null;
       // Construct the relative file path
       const relativeFilePath = path.join('storage', userId.toString(), req.file.filename);
 
@@ -81,22 +77,23 @@ export const addImage = [
 
       // Create a new file entry in the database
       const newFile = new FileModel({
-        name: req.file.originalname, // Original file name
-        userId,
-        folder: folderId,
-        filePath: relativeFilePath, // Store the relative file path
-        fileType: req.file.mimetype, // MIME type of the uploaded file
-        modifiedFileName: req.file.filename, // Store the modified file name (with timestamp)
-        fileSize
-      });
+          name: req.file.originalname, 
+          userId,
+          folder: folderId ||null,
+          filePath: relativeFilePath, 
+          fileType: req.file.mimetype, 
+          modifiedFileName: req.file.filename, 
+          fileSize
+        });
+        
+        await newFile.save();
 
-      await newFile.save();
 
-      // Return response to the client
+
       res.status(201).json({
         message: 'Image file added successfully',
         file: newFile,
-        fileUrl: fileUrl, // Include the file URL in the response
+        fileUrl: fileUrl, 
       });
     } catch (error) {
       if(req.file) fs.unlinkSync(req.file.path);
@@ -109,7 +106,7 @@ export const addImage = [
 
 // Add Pdf File
 export const addPdf = [
-    upload.single('pdf'), // Middleware to handle file upload
+    upload.single('pdf'), 
     async (req, res) => {
       const { folderId } = req.body;
       const userId = req.headers.user_id;
@@ -126,12 +123,7 @@ export const addPdf = [
 
           return res.status(400).json({ error: 'Selected File not a pdf' });
         }
-  
-        if (!folderId) {
-          fs.unlinkSync(req.file.path);
 
-          return res.status(400).json({ error: 'Folder ID is required' });
-        }
   
         // Construct the relative file path
         const relativeFilePath = path.join('storage', userId.toString(), req.file.filename);
@@ -143,12 +135,12 @@ export const addPdf = [
 
         // Create a new file entry in the database
         const newFile = new FileModel({
-          name: req.file.originalname, // Original file name
+          name: req.file.originalname,
           userId,
-          folder: folderId,
-          filePath: relativeFilePath, // Store the relative file path
-          fileType: req.file.mimetype, // MIME type of the uploaded file
-          modifiedFileName: req.file.filename, // Store the modified file name (with timestamp)
+          folder: folderId ||null,
+          filePath: relativeFilePath, 
+          fileType: req.file.mimetype, 
+          modifiedFileName: req.file.filename, 
           fileSize
         });
   
@@ -158,7 +150,7 @@ export const addPdf = [
         res.status(201).json({
           message: 'Pdf file added successfully',
           file: newFile,
-          fileUrl: fileUrl, // Include the file URL in the response
+          fileUrl: fileUrl, 
         });
       } catch (error) {
         if(req.file) fs.unlinkSync(req.file.path);
@@ -170,7 +162,7 @@ export const addPdf = [
 
   // Add Image File
 export const addNote = [
-    upload.single('text'), // Middleware to handle file upload
+    upload.single('text'), 
     async (req, res) => {
       const { folderId } = req.body;
       const userId = req.headers.user_id;
@@ -188,12 +180,8 @@ export const addNote = [
           return res.status(400).json({ error: 'Selected File not a text' });
         }
   
-        if (!folderId) {
-          fs.unlinkSync(req.file.path);
 
-          return res.status(400).json({ error: 'Folder ID is required' });
-        }
-  
+
         // Construct the relative file path
         const relativeFilePath = path.join('storage', userId.toString(), req.file.filename);
   
@@ -203,12 +191,12 @@ export const addNote = [
 
         // Create a new file entry in the database
         const newFile = new FileModel({
-          name: req.file.originalname, // Original file name
+          name: req.file.originalname, 
           userId,
-          folder: folderId,
-          filePath: relativeFilePath, // Store the relative file path
-          fileType: req.file.mimetype, // MIME type of the uploaded file
-          modifiedFileName: req.file.filename, // Store the modified file name (with timestamp)
+          folder: folderId ||null,
+          filePath: relativeFilePath, 
+          fileType: req.file.mimetype,
+          modifiedFileName: req.file.filename,
           fileSize
         });
   
@@ -218,7 +206,7 @@ export const addNote = [
         res.status(201).json({
           message: 'Text file added successfully',
           file: newFile,
-          fileUrl: fileUrl, // Include the file URL in the response
+          fileUrl: fileUrl, 
         });
       } catch (error) {
         if(req.file) fs.unlinkSync(req.file.path);

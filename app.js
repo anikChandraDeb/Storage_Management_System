@@ -54,7 +54,6 @@ app.set('etag',false);
 // MongoDB Connection
 mongoose.connect(MONGODB_CONNECTION, {
     serverSelectionTimeoutMS: 30000, // Set timeout to 30 seconds
-    bufferCommands: false //disable buffer
 })
 .then(() => {
     console.log("MongoDB Connected");

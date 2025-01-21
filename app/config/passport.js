@@ -5,7 +5,7 @@ import UsersModel from '../models/UsersModel.js';
 import path from 'node:path';
 import fs from 'fs';
 
-const __dirname = new URL('.', import.meta.url).pathname;
+const __dirname = path.dirname(new URL(import.meta.url).pathname).replace(/^\/([A-Za-z]:)/, '$1');
 
 export const configureGoogleStrategy = (passport) => {
   passport.use(
@@ -19,7 +19,7 @@ export const configureGoogleStrategy = (passport) => {
         try {
           // Ensure the user is logged in via Google by checking if profile exists
           if (profile) {
-            // Check if the user already exists in the database based on email
+
             let user = await UsersModel.findOne({ email: profile.emails[0].value });
 
             // If the user does not exist, create a new user

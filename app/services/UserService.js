@@ -10,7 +10,7 @@ import FolderModel from "../models/FolderModel.js";
 import { upload } from "../config/multerConfig.js";
 
 
-const __dirname = new URL('.', import.meta.url).pathname;
+const __dirname = path.dirname(new URL(import.meta.url).pathname).replace(/^\/([A-Za-z]:)/, '$1');
 
 export const SignUpService = async (req) => {
     try {
@@ -106,7 +106,7 @@ export const CodeVerifyService=async(req)=>{
             return {"Status":"fail","Message":"Wrong Verification Code"};
         }
         else{
-            return {"Status":"fail","Message":"Vefification Successfully"};
+            return {"Status":"Success","Message":"Vefification Successfully"};
         }
 
 
@@ -311,14 +311,11 @@ export const recentItemService = async (req, res) => {
   
       // Fetch recent folders
       const recentFolders = await FolderModel.find({ userId: userId }).sort({ createdAt: -1 }).limit(5);
-  
+
       // Combine files and folders into one array
       const recentItems = [
         ...recentFilesWithUrls, 
-        ...recentFolders.map(folder => ({
-          ...folder._doc, 
-          fileUrl: `${req.protocol}://${req.get('host')}/storage/${userId.toString()}/${folder.name}` // You can adjust how the folder URL is generated
-        }))
+        ...recentFolders
       ].sort((a, b) => b.createdAt - a.createdAt);
   
       if (recentItems.length === 0) {

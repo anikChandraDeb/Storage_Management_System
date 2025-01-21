@@ -1,3 +1,4 @@
+import FileModel from '../models/FileModel.js';
 import FolderModel from '../models/FolderModel.js';
 
 export const createFolder = async (req, res) => {
@@ -26,7 +27,7 @@ export const deleteFolder= async (req, res) => {
 
       // Optionally handle recursive deletion of nested folders
       await FolderModel.deleteOne({ _id: folderId });
-
+      await FileModel.deleteMany({folder:folderId});
       res.status(200).json({"status":"Success", message: "Folder deleted successfully" });
     } catch (error) {
       res.status(500).json({"Status":"fail", error: "Failed to delete folder", details: error.message });

@@ -8,7 +8,7 @@ import mime from 'mime-types'; // Optional, to check file extension if needed
 
 
 //  get __dirname
-const __dirname = new URL('.', import.meta.url).pathname;
+const __dirname = path.dirname(new URL(import.meta.url).pathname).replace(/^\/([A-Za-z]:)/, '$1');
 
 export const renameService = async (req, res) => {
     const { type, id } = req.params; // 'type' can be 'file' or 'folder', 'id' is the item ID

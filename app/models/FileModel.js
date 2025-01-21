@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const fileSchema = new mongoose.Schema({
   name: { type: String, required: true },
   userId: { type: mongoose.Schema.Types.ObjectId, required: true },
-  folder: { type: mongoose.Schema.Types.ObjectId, required: true },
+  folder: { type: mongoose.Schema.Types.ObjectId },
   filePath: { type: String, required: true },
   fileType: { type: String, required: true },
   modifiedFileName: { type: String, required: true },

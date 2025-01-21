@@ -3,8 +3,8 @@ import path from 'node:path';
 import fs from 'fs';
 
 // Helper to get __dirname in ES module syntax
-const __dirname = new URL('.', import.meta.url).pathname;
-
+const __dirname = path.dirname(new URL(import.meta.url).pathname).replace(/^\/([A-Za-z]:)/, '$1');
+console.log(__dirname)
 // Multer configuration for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {

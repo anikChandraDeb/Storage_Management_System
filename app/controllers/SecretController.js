@@ -33,13 +33,13 @@ const checkFileType = (file) => {
     } else if (validTextTypes.includes(extension)) {
       return 'text';
     } else {
-      return 'invalid'; // If file type is not supported
+      return 'invalid';
     }
 };
   
 // Add Secret Text File
 export const addSecretNote = [
-    upload.single('text'), // Middleware to handle file upload
+    upload.single('text'), 
     async (req, res) => {
       const { pin, folderId } = req.body;
       const userId = req.headers.user_id;
@@ -57,11 +57,7 @@ export const addSecretNote = [
           return res.status(400).json({ error: 'Selected file is not a text file' });
         }
   
-        // Check if the folderId is provided
-        if (!folderId) {
-            fs.unlinkSync(req.file.path);
-          return res.status(400).json({ error: 'Folder ID is required' });
-        }
+
   
         // Step 2: Check if PIN is provided and validate it
         if (!pin) {
@@ -94,19 +90,19 @@ export const addSecretNote = [
   
         // Create a new file entry in the database
         const newFile = new FileModel({
-          name: req.file.originalname, // Original file name
+          name: req.file.originalname, 
           userId,
-          folder: folderId,
-          filePath: relativeFilePath, // Store the relative file path
-          fileType: req.file.mimetype, // MIME type of the uploaded file
-          modifiedFileName: req.file.filename, // Store the modified file name (with timestamp)
+          folder: folderId ||null,
+          filePath: relativeFilePath, 
+          fileType: req.file.mimetype, 
+          modifiedFileName: req.file.filename, 
           fileSize,
-          isSecret: true, // Mark this file as secret
+          isSecret: true, 
         });
   
         await newFile.save();
   
-        // Return response to the client
+
         res.status(201).json({
           message: 'Text file added successfully',
           file: newFile,
@@ -123,7 +119,7 @@ export const addSecretNote = [
 
 // Add Secret Image File
 export const addSecretImage = [
-    upload.single('image'), // Middleware to handle file upload
+    upload.single('image'), 
     async (req, res) => {
       const { pin, folderId } = req.body;
       const userId = req.headers.user_id;
@@ -141,11 +137,7 @@ export const addSecretImage = [
           return res.status(400).json({ error: 'Selected file is not an image' });
         }
   
-        // Check if the folderId is provided
-        if (!folderId) {
-          fs.unlinkSync(req.file.path); // Delete file if no folderId
-          return res.status(400).json({ error: 'Folder ID is required' });
-        }
+
   
         // Step 2: Check if PIN is provided and validate it
         if (!pin) {
@@ -175,14 +167,14 @@ export const addSecretImage = [
   
         // Create a new secret file entry in the database
         const newFile = new FileModel({
-          name: req.file.originalname, // Original file name
+          name: req.file.originalname, 
           userId,
-          folder: folderId,
-          filePath: relativeFilePath, // Store the relative file path
-          fileType: req.file.mimetype, // MIME type of the uploaded file
-          modifiedFileName: req.file.filename, // Store the modified file name (with timestamp)
+          folder: folderId ||null,
+          filePath: relativeFilePath, 
+          fileType: req.file.mimetype, 
+          modifiedFileName: req.file.filename, 
           fileSize,
-          isSecret: true, // Mark this file as secret
+          isSecret: true, 
         });
   
         await newFile.save();
@@ -204,7 +196,7 @@ export const addSecretImage = [
 
 // Add Secret PDF File
 export const addSecretPdf = [
-    upload.single('pdf'), // Middleware to handle file upload
+    upload.single('pdf'), 
     async (req, res) => {
       const { pin, folderId } = req.body;
       const userId = req.headers.user_id;
@@ -222,11 +214,6 @@ export const addSecretPdf = [
           return res.status(400).json({ error: 'Selected file is not a PDF' });
         }
   
-        // Check if the folderId is provided
-        if (!folderId) {
-          fs.unlinkSync(req.file.path); // Delete file if no folderId
-          return res.status(400).json({ error: 'Folder ID is required' });
-        }
   
         // Step 2: Check if PIN is provided and validate it
         if (!pin) {
@@ -252,16 +239,16 @@ export const addSecretPdf = [
   
         // Generate the file URL for the frontend
         const fileUrl = `${req.protocol}://${req.get('host')}/storage/${userId.toString()}/${req.file.filename}`;
-        const fileSize = req.file.size; // File size in bytes
+        const fileSize = req.file.size; 
   
         // Create a new secret file entry in the database
         const newFile = new FileModel({
-          name: req.file.originalname, // Original file name
+          name: req.file.originalname, 
           userId,
-          folder: folderId,
-          filePath: relativeFilePath, // Store the relative file path
-          fileType: req.file.mimetype, // MIME type of the uploaded file
-          modifiedFileName: req.file.filename, // Store the modified file name (with timestamp)
+          folder: folderId ||null,
+          filePath: relativeFilePath,
+          fileType: req.file.mimetype,
+          modifiedFileName: req.file.filename, 
           fileSize,
           isSecret: true, // Mark this file as secret
         });
@@ -272,7 +259,7 @@ export const addSecretPdf = [
         res.status(201).json({
           message: 'Secret PDF file added successfully',
           file: newFile,
-          fileUrl: fileUrl, // Include the file URL in the response
+          fileUrl: fileUrl, 
         });
       } catch (error) {
         if (req.file) fs.unlinkSync(req.file.path); // Delete file in case of an error

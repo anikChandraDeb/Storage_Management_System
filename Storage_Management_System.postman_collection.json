@@ -508,44 +508,6 @@
 					"response": []
 				},
 				{
-					"name": "upload",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "authtoken",
-								"value": "{{TOKEN}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/home/anik/Desktop/abc.jpg"
-								},
-								{
-									"key": "folderId",
-									"value": "678e756b683b4f4c26e06271",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{BASE}}/upload",
-							"host": [
-								"{{BASE}}"
-							],
-							"path": [
-								"upload"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "addPdf",
 					"request": {
 						"method": "POST",
@@ -1069,7 +1031,7 @@
 		},
 		{
 			"key": "TOKEN",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFqZ29yQGdtYWlsLmNvbSIsInVzZXJfaWQiOiI2NzhlNjdmNDM0NDhlZDc4MWM1NDU2NGUiLCJpYXQiOjE3Mzc1MDAwMjgsImV4cCI6MTc0MDA5MjAyOH0.m0rF-1ObjGQjc-e-Itatml3Vd0HWV7bGdMjtAf7GNRI",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFqZ29yQGdtYWlsLmNvbSIsInVzZXJfaWQiOiI2NzhlNjdmNDM0NDhlZDc4MWM1NDU2NGUiLCJpYXQiOjE3Mzc1Mzc4NjYsImV4cCI6MTc0MDEyOTg2Nn0.ovWiDYUQlkZ8WpgBG35zctqo73S_3JvNfpitJ0uhqc0",
 			"type": "string"
 		},
 		{

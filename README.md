@@ -34,6 +34,73 @@ The Storage Management System is a backend application for efficient file and fo
 - Add secret images and PDFs with extra protection.  
 
 
+## API Endpoints
+## User Management
+- **/SignUp**: User registration.
+- **/Login**: User login.
+- **/Profile**: View user profile details (requires authentication).
+- **/ProfileUpdate**: Update user profile (requires authentication).
+- **/EmailVerify**: Verify user email.
+- **/ResetPassword**: Reset user password.
+- **/ChangePassword**: Change user password (requires authentication).
+- **/Logout**: User logout (requires authentication).
+
+## File Management
+- **/createFolder**: Create a new folder (requires authentication).
+- **/listOfFolders**: List all folders (requires authentication).
+- **/addImage**: Upload an image file (requires authentication).
+- **/addPdf**: Upload a PDF file (requires authentication).
+- **/addNote**: Upload a note file (requires authentication).
+- **/listOfNotes**: List all note files (requires authentication).
+- **/listOfImages**: List all image files (requires authentication).
+- **/listOfPDFs**: List all PDF files (requires authentication).
+
+## Folder/File Operations
+- **/listOfItemByDate**: List files and folders sorted by date (requires authentication).
+- **/rename/:id/:type**: Rename a file or folder (requires authentication).
+- **/duplicate/:id/:type**: Duplicate a file or folder (requires authentication).
+- **/delete/:id/:type**: Delete a file or folder (requires authentication).
+
+## Favorites
+- **/addFavorite/:id/:type**: Add a file or folder to favorites (requires authentication).
+- **/removeFavorite/:id/:type**: Remove a file or folder from favorites (requires authentication).
+- **/listFavoriteItem**: List all favorite items (requires authentication).
+
+https://documenter.getpostman.com/view/38239023/2sAYQcEqRm#dee8d1e5-4e53-4926-94ed-06968ef25202
+
+
+
+
+## Folder and File Structure
+
+Files and folders are stored in the `storage` directory by default. MongoDB is used to manage metadata like folder hierarchy, file names, and ownership.
+
+## Project Structure
+
+```
+storage-management-system/
+├── app/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── config/
+│   │   ├── passport.js
+│   │   └── config.js
+│   ├── utility/
+│   ├── service/
+│   └── middlewares/
+├── storage/ (Files stored here)
+├── routes/ (Routes in the root)
+├── app.js
+├── package.json
+└── README.md
+```
+
+## Security Considerations
+
+- **JWT Tokens**: Tokens are used for authorization and should be stored securely (e.g., HTTP-only cookies).
+- **Environment Variables**: Do not hardcode sensitive credentials in the code; they are centralized in `config.js`.
+- **Unique File Names**: Uploaded files are stored with unique names to avoid conflicts.
 
 ## Installation Steps
 
@@ -101,70 +168,7 @@ The Storage Management System is a backend application for efficient file and fo
    nodemon app.js
    ```
 
-## API Endpoints
-## User Management
-- **/SignUp**: User registration.
-- **/Login**: User login.
-- **/Profile**: View user profile details (requires authentication).
-- **/ProfileUpdate**: Update user profile (requires authentication).
-- **/EmailVerify**: Verify user email.
-- **/ResetPassword**: Reset user password.
-- **/ChangePassword**: Change user password (requires authentication).
-- **/Logout**: User logout (requires authentication).
 
-## File Management
-- **/createFolder**: Create a new folder (requires authentication).
-- **/listOfFolders**: List all folders (requires authentication).
-- **/addImage**: Upload an image file (requires authentication).
-- **/addPdf**: Upload a PDF file (requires authentication).
-- **/addNote**: Upload a note file (requires authentication).
-- **/listOfNotes**: List all note files (requires authentication).
-- **/listOfImages**: List all image files (requires authentication).
-- **/listOfPDFs**: List all PDF files (requires authentication).
-
-## Folder/File Operations
-- **/listOfItemByDate**: List files and folders sorted by date (requires authentication).
-- **/rename/:id/:type**: Rename a file or folder (requires authentication).
-- **/duplicate/:id/:type**: Duplicate a file or folder (requires authentication).
-- **/delete/:id/:type**: Delete a file or folder (requires authentication).
-
-## Favorites
-- **/addFavorite/:id/:type**: Add a file or folder to favorites (requires authentication).
-- **/removeFavorite/:id/:type**: Remove a file or folder from favorites (requires authentication).
-- **/listFavoriteItem**: List all favorite items (requires authentication).
-
-https://documenter.getpostman.com/view/38239023/2sAYQcEqRm#dee8d1e5-4e53-4926-94ed-06968ef25202
-
-## Folder and File Structure
-
-Files and folders are stored in the `storage` directory by default. MongoDB is used to manage metadata like folder hierarchy, file names, and ownership.
-
-## Project Structure
-
-```
-storage-management-system/
-├── app/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── config/
-│   │   ├── passport.js
-│   │   └── config.js
-│   ├── utility/
-│   ├── service/
-│   └── middlewares/
-├── storage/ (Files stored here)
-├── routes/ (Routes in the root)
-├── app.js
-├── package.json
-└── README.md
-```
-
-## Security Considerations
-
-- **JWT Tokens**: Tokens are used for authorization and should be stored securely (e.g., HTTP-only cookies).
-- **Environment Variables**: Do not hardcode sensitive credentials in the code; they are centralized in `config.js`.
-- **Unique File Names**: Uploaded files are stored with unique names to avoid conflicts.
 
 ## Future Improvements
 

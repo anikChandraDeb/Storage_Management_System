@@ -102,7 +102,37 @@ The Storage Management System is a backend application for efficient file and fo
    ```
 
 ## API Endpoints
-Show in the postman collection and documentation(click below)
+## User Management
+- **/SignUp**: User registration.
+- **/Login**: User login.
+- **/Profile**: View user profile details (requires authentication).
+- **/ProfileUpdate**: Update user profile (requires authentication).
+- **/EmailVerify**: Verify user email.
+- **/ResetPassword**: Reset user password.
+- **/ChangePassword**: Change user password (requires authentication).
+- **/Logout**: User logout (requires authentication).
+
+## File Management
+- **/createFolder**: Create a new folder (requires authentication).
+- **/listOfFolders**: List all folders (requires authentication).
+- **/addImage**: Upload an image file (requires authentication).
+- **/addPdf**: Upload a PDF file (requires authentication).
+- **/addNote**: Upload a note file (requires authentication).
+- **/listOfNotes**: List all note files (requires authentication).
+- **/listOfImages**: List all image files (requires authentication).
+- **/listOfPDFs**: List all PDF files (requires authentication).
+
+## Folder/File Operations
+- **/listOfItemByDate**: List files and folders sorted by date (requires authentication).
+- **/rename/:id/:type**: Rename a file or folder (requires authentication).
+- **/duplicate/:id/:type**: Duplicate a file or folder (requires authentication).
+- **/delete/:id/:type**: Delete a file or folder (requires authentication).
+
+## Favorites
+- **/addFavorite/:id/:type**: Add a file or folder to favorites (requires authentication).
+- **/removeFavorite/:id/:type**: Remove a file or folder from favorites (requires authentication).
+- **/listFavoriteItem**: List all favorite items (requires authentication).
+
 https://documenter.getpostman.com/view/38239023/2sAYQcEqRm#dee8d1e5-4e53-4926-94ed-06968ef25202
 
 ## Folder and File Structure

@@ -1,6 +1,40 @@
 # Storage Management System
 
-The Storage Management System is a Node.js-based backend application for managing files and folders, supporting features like user authentication, folder hierarchy, and file uploads. This system uses MongoDB as the database and integrates with Google OAuth for authentication.
+The Storage Management System is a backend application for efficient file and folder management. It features secure authentication, Google login, file uploads, advanced sorting, favorites, and user account management. With added security for restricted content, it ensures organized and reliable storage solutions.
+
+
+# Key Features of Storage Management System
+
+# Key Features of Storage Management System
+
+## Folder Management  
+- Create folders to organize files systematically.  
+- List all folders for easy navigation.  
+- Rename folders to maintain clarity.  
+- Delete folders to remove unnecessary content.  
+
+## File Management  
+- Upload files of various types, including images, PDFs, and notes.  
+- Retrieve files quickly with optimized endpoints.  
+
+## Advanced Features  
+- Mark items as favorites for quick access.  
+- Duplicate files or folders easily.  
+- Sort items by date for better organization.  
+- Access recently used items for convenience.  
+
+## User Account Management  
+- Sign up for personalized access.  
+- Log in to manage your account securely.  
+- Recover lost passwords with ease.  
+- Edit user profiles to update information.  
+- View detailed storage statistics for better file management.  
+
+## Secure Access  
+- Set PINs to restrict access to sensitive content.  
+- Manage secret notes securely.  
+- Add secret images and PDFs with extra protection.  
+
 
 
 ## Installation Steps

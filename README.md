@@ -5,8 +5,6 @@ The Storage Management System is a backend application for efficient file and fo
 
 # Key Features of Storage Management System
 
-# Key Features of Storage Management System
-
 ## Folder Management  
 - Create folders to organize files systematically.  
 - List all folders for easy navigation.  
